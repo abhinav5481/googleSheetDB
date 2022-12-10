@@ -1,0 +1,45 @@
+<html>
+    <head>
+        <script
+  src="https://code.jquery.com/jquery-3.4.1.js"
+  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+  crossorigin="anonymous"></script>
+    </head>
+  <body>
+   <form id="myForm">
+    <label>Full Name</label>
+    <br/>
+    <input type="text" id = "name" name="name" />
+    <br/>
+    <label>Phone</label>
+    <br/>
+    <input type="tel" id="phone" name="phone" placeholder="1234567890" pattern="[0-9]{10}" required><br><br>
+    <br/>
+    <br/>
+    <br/>
+  </form>
+  <button onclick="insert_value()">Submit</button>
+  </body>
+  <script>
+
+ var script_url ="https://script.google.com/macros/s/AKfycbxBRYxGjGaGa5UQs5WxmQdPqB6a2OUY_Q5EVTUcvh6Mt_o53n0-5qwu5AlaT6jSfv1V/exec";
+  function insert_value() {
+    var name= $("#name").val();
+    var phone= $("#phone").val();
+   var url = script_url+"?name="+name+"&phone="+phone+"&action=insert"; 
+    var request = jQuery.ajax({
+      crossDomain: true,
+      url: url , 
+      method: "GET",
+      dataType: "jsonp",
+      success: function(){
+          alert("Form Data Submitted :)")
+        },
+        error: function(){
+          alert("There was an error :(")
+        }
+    });
+}
+
+</script>
+</html>
